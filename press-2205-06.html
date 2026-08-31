@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <title>アクセス拒否 | 祀務庁統合情報システム</title>
+    <style>
+        /* 画面全体を完全に暗くするスタイル */
+        body {
+            background-color: #050505;
+            color: #d13232; /* 警告を意味する赤色 */
+            font-family: 'Times New Roman', 'Yu Mincho', '游明朝', serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* 中央の警告エリア */
+        .error-container {
+            text-align: center;
+            padding: 20px;
+            animation: glitch 1s linear infinite; /* わずかな画面の歪み演出 */
+        }
+
+        /* ロゴマーク */
+        .alert-logo {
+            height: 100px;
+            width: auto;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 0 10px rgba(209, 50, 50, 0.6));
+            opacity: 0.8;
+        }
+
+        /* 「閲覧不可」の大文字 */
+        .main-alert {
+            font-size: 4rem;
+            font-weight: 900;
+            letter-spacing: 0.3em;
+            margin: 0 0 15px 0;
+            text-shadow: 0 0 15px rgba(209, 50, 50, 0.8);
+        }
+
+        /* 「このページは閲覧制限がかかりました」の文章 */
+        .sub-alert {
+            font-size: 1.4rem;
+            letter-spacing: 0.15em;
+            color: #a3a3a3; /* 落ち着いたグレー */
+            margin: 0 0 40px 0;
+        }
+
+        /* 管理コードなどのディテール（より役所らしく） */
+        .system-info {
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: #555555;
+            line-height: 1.6;
+        }
+
+        /* 戻るボタン（隠しリンク風） */
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: #555555;
+            text-decoration: none;
+            font-size: 0.85rem;
+            border: 1px solid #333333;
+            padding: 5px 15px;
+            transition: all 0.3s;
+        }
+        .back-link:hover {
+            color: #d13232;
+            border-color: #d13232;
+            background: rgba(209, 50, 50, 0.05);
+        }
+
+        /* 雰囲気づくりのためのノイズ風アニメーション */
+        @keyframes glitch {
+            0% { transform: translate(0) }
+            20% { transform: translate(-1px, 1px) }
+            40% { transform: translate(-1px, -1px) }
+            60% { transform: translate(1px, 1px) }
+            80% { transform: translate(1px, -1px) }
+            100% { transform: translate(0) }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="error-container">
+        <!-- 祀務庁ロゴマーク -->
+        <img src="logo.png" alt="祀務庁 紋章" class="alert-logo">
+        
+        <!-- 大きく出る文字 -->
+        <h1 class="main-alert">閲覧不可</h1>
+        <p class="sub-alert">このページは閲覧制限がかかりました</p>
+        
+        <!-- 官公庁のエラー画面らしさを出すシステムテキスト -->
+        <div class="system-info">
+            PROTOCOL: SHIJI-SYSTEM-V4<br>
+            ERROR CODE: 403 FORBIDDEN (RESTRICTED ACCESS)<br>
+            あなたのIPアドレスおよび識別子は記録されました。
+        </div>
+
+        <!-- 前のページに戻るための導線 -->
+        <a href="index.html" class="back-link">ポータルへ戻る</a>
+    </div>
+
+    <!-- 警告音を「ピピーッ！！」に強化したJavaScript -->
+    <script>
+        let audioPlayed = false;
+
+        function playAlertSound() {
+            if (audioPlayed) return;
+            
+            try {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                const ctx = new AudioContext();
+                
+                // 1発目の短い音（「ピ」）
+                setTimeout(() => {
+                    const osc1 = ctx.createOscillator();
+                    const gain1 = ctx.createGain();
+                    osc1.type = 'square'; // お役所のシステム警告らしい、はっきりした音（矩形波）
+                    osc1.frequency.setValueAtTime(1000, ctx.currentTime); // 鋭く高い音（1000Hz）
+                    gain1.gain.setValueAtTime(0.08, ctx.currentTime); // 音量
+                    gain1.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.08);
+                    osc1.connect(gain1);
+                    gain1.connect(ctx.destination);
+                    osc1.start();
+                    osc1.stop(ctx.currentTime + 0.08);
+                }, 0);
+
+                // 2発目の長くて鋭い音（「ピーッ！！」）
+                setTimeout(() => {
+                    const osc2 = ctx.createOscillator();
+                    const gain2 = ctx.createGain();
+                    osc2.type = 'square'; // 同様の警告音色
+                    osc2.frequency.setValueAtTime(1000, ctx.currentTime); // 同じ高さ
+                    gain2.gain.setValueAtTime(0.08, ctx.currentTime); 
+                    // 音の終わり際をスパッと切ることで「！！」の鋭さを表現
+                    gain2.gain.setValueAtTime(0.08, ctx.currentTime + 0.35);
+                    gain2.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4);
+                    osc2.connect(gain2);
+                    gain2.connect(ctx.destination);
+                    osc2.start();
+                    osc2.stop(ctx.currentTime + 0.4);
+                }, 100); // 0.1秒の絶妙な間隔を開けて「ピーッ！！」を鳴らす
+
+                audioPlayed = true;
+            } catch (e) {
+                console.log("Audio play blocked or not supported:", e);
+            }
+        }
+
+        // ページ読み込み時に自動再生を試みる
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(playAlertSound, 300);
+        });
+
+        // 画面のどこかをクリック、またはキーを押しても鳴るようにする
+        window.addEventListener('click', playAlertSound);
+        window.addEventListener('keydown', playAlertSound);
+    </script>
+</body>
+</html>
