@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex">
+    <title>祀務庁 公式ウェブサイト</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="alert-ticker">【重要】未確認の怪異・異常現象を発見した際は、興味本位で接近せず直ちに安全を確保してください。</div>
+    <header class="site-header">
+        <div class="container header-inner">
+             <div class="logo-area">
+                <!-- display: flex でロゴとテキストを横並び・中央揃えに設定 -->
+                <a href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+                    <!-- 追加：省庁ロゴマーク -->
+                    <img src="logo.png" alt="祀務庁 紋章" style="height: 45px; width: auto; display: block;">
+                    <div>
+                        <div class="logo-title" style="line-height: 1.2;">祀務庁</div>
+                        <div class="logo-subtitle" style="font-size: 11px; opacity: 0.8; margin-top: 2px;">Ministry of Paranormal Affairs</div>
+                    </div>
+                </a>
+            </div>
+            <nav class="global-nav">
+                <ul>
+                    <li><a href="index.html" class="active">ホーム</a></li>
+                    <li><a href="about.html">祀務庁とは</a></li>
+                    <li><a href="tsukimono.html">憑物とは</a></li>
+                    <li><a href="sites.html">処置サイト</a></li>
+                    <li><a href="public.html">国民の皆様へ</a></li>
+                    <li><a href="emergency.html" style="color:var(--accent-alert); font-weight:bold;">緊急対応</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+   <section class="hero" style="
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('hero-bg.png') no-repeat center center / cover;
+        padding: 100px 0;
+        color: #ffffff;
+        text-align: center;
+    ">               <div class="container">
+            <!-- フォントを厳かな明朝体に指定、文字間隔を広げて雰囲気を強化 -->
+            <h1 style="
+                font-family: 'Times New Roman', 'Yu Mincho', '游明朝', 'MS Mincho', 'ＭＳ 明朝', serif;
+                font-size: 3rem;
+                font-weight: 700;
+                letter-spacing: 0.2em;
+                margin-bottom: 20px;
+                text-shadow: 0 0 10px rgba(255, 0, 0, 0.5); /* 仄暗い赤い光（怪異の気配） */
+            ">正しく祀り、善く務める</h1>
+            <p style="
+                font-family: 'Times New Roman', 'Yu Mincho', '游明朝', 'MS Mincho', 'ＭＳ 明朝', serif;
+                font-size: 1.2rem;
+                letter-spacing: 0.1em;
+                opacity: 0.9;
+            ">人と神霊、現世と異界、両者の境界に生じる事象を記録、管理し、適切な処置を行う。</p>
+        </div>
+    </section>
+
+    <main class="container">
+        <div class="main-wrapper">
+            <div class="main-content">
+                <section>
+                    <h2 class="section-title">新着情報・報道発表</h2>
+                    <table class="data-table">
+                        <tr>
+                            <th>2205年8月</th>
+                            <td><a href="press-2205-08.html">「夏季における水辺の特殊事案について」の公表</a></td>
+                        </tr>
+                        <tr>
+                            <th>2205年7月</th>
+                            <td><a href="press-2205-07.html">「夜間における特殊事案への注意喚起」の公表</a></td>
+                        </tr>
+                        <tr>
+                            <th>2205年6月</th>
+                            <td><a href="press-2205-06.html">「電脳空間における情報性憑物について」の注意喚起</a></td>
+                        </tr>
+                    </table>
+                    <div style="text-align: right;"><a href="press.html">👉 報道発表一覧へ</a></div>
+                </section>
+
+                <section>
+                    <h2 class="section-title">行政基本方針</h2>
+                    <p>祀務庁は、我が国における神霊・憑物その他の超自然的事象に関する行政を所管する国の機関です。不可視の存在を正しく知り、正しく祀り、正しく対処することを理念として活動しています。</p>
+                </section>
+            </div>
+
+            <aside class="sidebar">
+                <div class="sidebar-widget">
+                    <h3>緊急窓口</h3>
+                    <p style="font-size: 13px; margin-bottom: 10px;">異常現象の発生時、または被害に遭われた場合はこちらを確認してください。</p>
+                    <a href="emergency.html" class="btn btn-alert" style="display:block; text-align:center;">緊急時の対応</a>
+                </div>
+                <div class="sidebar-widget">
+                    <h3>各種メニュー</h3>
+                    <ul class="sidebar-menu">
+                        <li><a href="procedures.html">届出・申請手続き</a></li>
+                        <li><a href="faq.html">よくある質問（FAQ）</a></li>
+                        <li><a href="recruit.html">採用情報</a></li>
+                        <li><a href="officer.html">祀事特殊事案対策官について</a></li>
+                        <li><a href="chinju.html">特殊空間「鎮守」</a></li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="index.html">ホーム</a>
+                <a href="about.html">祀務庁とは</a>
+                <a href="tsukimono.html">憑物について</a>
+                <a href="sites.html">処置サイト</a>
+                <a href="public.html">国民の皆様へ</a>
+                <a href="procedures.html">届出・申請</a>
+                <a href="recruit.html">採用情報</a>
+            </div>
+            <div class="footer-bottom">
+                &copy; 祀務庁 - Ministry of Paranormal Affairs. All Rights Reserved. (行政管理用アーカイブ)
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
