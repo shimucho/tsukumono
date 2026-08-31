@@ -340,3 +340,235 @@ section {
         font-size: 30px;
     }
 }
+
+
+
+/* =========================
+   基本設定
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    margin: 0;
+    background: #f5f5f3;
+    color: #222;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Noto Sans JP",
+        "Yu Gothic",
+        "Hiragino Kaku Gothic ProN",
+        sans-serif;
+    line-height: 1.8;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    color: #174a72;
+}
+
+
+/* =========================
+   ヘッダー
+========================= */
+
+header {
+    background: #ffffff;
+    border-bottom: 1px solid #ccc;
+}
+
+.header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: bold;
+    letter-spacing: .08em;
+}
+
+
+/* =========================
+   ナビゲーション
+========================= */
+
+nav ul {
+    display: flex;
+    gap: 24px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+}
+
+
+/* =========================
+   メイン
+========================= */
+
+main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 50px 24px 80px;
+}
+
+.content {
+    background: #fff;
+    padding: 40px;
+    border: 1px solid #ddd;
+}
+
+
+/* =========================
+   見出し
+========================= */
+
+h1 {
+    margin-top: 0;
+    padding-bottom: 16px;
+    border-bottom: 3px solid #333;
+    font-size: 2rem;
+}
+
+h2 {
+    margin-top: 48px;
+    padding-left: 12px;
+    border-left: 4px solid #555;
+    font-size: 1.4rem;
+}
+
+h3 {
+    margin-top: 32px;
+    font-size: 1.1rem;
+}
+
+
+/* =========================
+   ボタン・リンク
+========================= */
+
+.button {
+    display: inline-block;
+    padding: 12px 20px;
+    border: 1px solid #888;
+    background: #fff;
+    text-decoration: none;
+}
+
+
+/* =========================
+   スマートフォン
+========================= */
+
+@media (max-width: 700px) {
+
+    html {
+        font-size: 15px;
+    }
+
+    body {
+        line-height: 1.75;
+    }
+
+    /* ヘッダーを縦積みに */
+    .header-inner {
+        display: block;
+        padding: 16px;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+        margin-bottom: 14px;
+    }
+
+    /* ナビを2列にする */
+    nav ul {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0;
+        border-top: 1px solid #ddd;
+        border-left: 1px solid #ddd;
+    }
+
+    nav li {
+        border-right: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+    }
+
+    nav a {
+        display: block;
+        padding: 11px 8px;
+        text-align: center;
+        font-size: .9rem;
+    }
+
+    /* メインの余白を減らす */
+    main {
+        padding: 24px 12px 50px;
+    }
+
+    .content {
+        padding: 24px 18px;
+    }
+
+    /* 見出し */
+    h1 {
+        font-size: 1.6rem;
+        line-height: 1.4;
+    }
+
+    h2 {
+        margin-top: 36px;
+        font-size: 1.25rem;
+    }
+
+    h3 {
+        font-size: 1.05rem;
+    }
+
+    /* 長い文章を読みやすく */
+    p {
+        margin: 0 0 1.2em;
+    }
+
+    /* リスト */
+    ul,
+    ol {
+        padding-left: 1.5em;
+    }
+
+    /* 表がある場合 */
+    table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    /* ボタン */
+    .button {
+        width: 100%;
+        text-align: center;
+        padding: 13px;
+    }
+}
