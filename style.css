@@ -325,17 +325,18 @@ section {
 }
 
 /* ==========================================================================
-   スマートフォン対応 (ブレイクポイント: 768px以下) - ナビゲーション最適化版
+   スマートフォン対応 (ブレイクポイント: 768px以下) - 画面内折り返し・報道発表最適化版
    ========================================================================== */
 @media (max-width: 768px) {
     body {
         font-size: 15px;
         line-height: 1.65;
+        overflow-x: hidden; /* 🟢 画面全体の横揺れ・はみ出しを完全に禁止 */
     }
 
     /* レイアウトを縦一列に */
     .main-wrapper {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
         gap: 30px;
         margin: 20px 0;
     }
@@ -345,34 +346,96 @@ section {
         flex-direction: column;
         align-items: center;
         text-align: center;
-        gap: 20px; /* ロゴとメニューの間の余白 */
+        gap: 20px;
     }
 
-    /* 🟢 グローバルナビゲーションをスマホ用に最適化 */
+    /* グローバルナビゲーションをスマホ用に最適化 */
     .global-nav {
-        width: 100%; /* 横幅いっぱいに広げる */
+        width: 100%;
     }
 
     .global-nav ul {
         display: flex;
-        flex-wrap: wrap;       /* 画面幅に応じて自動で綺麗に改行させる */
-        justify-content: center; /* メニュー全体を中央寄せに */
-        gap: 8px 12px;         /* 上下の行間を8px、左右の隙間を12pxに設定 */
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px 12px;
         padding: 0 10px;
-    }
-
-    .global-nav li {
-        /* 必要に応じて2列や3列に整えたい場合はこちらを有効にしてください */
-        /* min-width: calc(33.333% - 12px); */
     }
 
     .global-nav a {
         display: inline-block;
         font-size: 13px;
-        padding: 8px 12px;     /* タップしやすいように上下左右の余白を確保 */
-        background-color: rgba(255, 255, 255, 0.05); /* うっすら背景を敷いてボタンらしく */
+        padding: 8px 12px;
+        background-color: rgba(255, 255, 255, 0.05);
         border-radius: 4px;
-        white-space: nowrap;   /* 単語の途中（「処置サイト」の中など）で変な改行を防ぐ */
+        white-space: nowrap;
+    }
+
+    /* 🟢 新着情報・報道発表の最適化（画面に収める） */
+    /* ※HTMLが定義リスト(dl/dt/dd)や汎用ブロック(div)のどちらで組まれていても縦並びにして収めます */
+    .news-list, 
+    .information,
+    h2 + div, 
+    h2 + ul {
+        display: block !important;
+        width: 100% !important;
+    }
+
+    /* 日付やタイトルのパーツが横並びで潰れないよう、完全に縦に積む */
+    .news-list-item,
+    section div > p,
+    h2 + div p {
+        display: block !important;
+        width: 100% !important;
+        margin-bottom: 5px;
+        white-space: normal !important; /* 改行を許可 */
+        word-break: break-all !important;
+    }
+
+    /* 2205年8月などの日付部分に少し変化をつけて見やすく */
+    section div > p:nth-child(odd) {
+        font-weight: bold;
+        color: var(--text-muted);
+        margin-top: 15px;
+        margin-bottom: 2px;
+    }
+    section div > p:nth-child(even) {
+        margin-bottom: 15px;
+        border-bottom: 1px dashed var(--border-color);
+        padding-bottom: 10px;
+    }
+
+    /* 🟢 テーブルを横スクロールさせず、画面の幅の中で強制折り返し */
+    .data-table {
+        display: table !important; /* スクロール用ブロック化を解除 */
+        width: 100% !important;
+        table-layout: fixed !important; /* ✨セルの横幅を固定し、文字の折り返しを強制する */
+        margin: 20px 0;
+    }
+
+    .data-table th, 
+    .data-table td {
+        white-space: normal !important; /* 確実に自動改行させる */
+        word-break: break-all !important;   /* 長い英数字や記号も枠内で強制改行 */
+        overflow-wrap: break-word !important; /* 日本語の不自然な突き抜けを防止 */
+        font-size: 12px;                /* スマホ用に文字を小さくして収める */
+        padding: 10px 6px;              /* 左右の余白を最小限に */
+    }
+
+    /* 列の幅をスマホ画面用に最適化 (3列構成を想定：サイト分類/特徴/代表例) */
+    .data-table th {
+        width: 25% !important;          /* 分類（山岳サイト等）の列幅 */
+        background-color: #f1f3f5;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    /* 3列の表の場合、2列目（特徴）と3列目（代表例）の幅のバランスを調整 */
+    .data-table td:nth-child(2) {
+        width: 45% !important;          /* 特徴の列幅 */
+    }
+    .data-table td:nth-child(3) {
+        width: 30% !important;          /* 代表例の列幅 */
     }
 
     /* ヒーローエリアの文字サイズ調整 */
@@ -397,15 +460,6 @@ section {
 
     .page-title {
         font-size: 22px;
-    }
-
-    /* テーブルを横スクロール可能に */
-    .data-table {
-        display: block;
-        width: 100%;
-        overflow-x: auto;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
     }
 
     /* ボタンを押しやすいように全幅化 */
