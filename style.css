@@ -58,7 +58,7 @@ img {
 
 /* ヘッダー */
 .site-header {
-    background-color: var(--accent Dark);
+    background-color: var(--accent-dark); /* ← こちらの記述を正しく修正しました */
     color: #ffffff;
     padding: 20px 0;
     border-bottom: 3px solid var(--accent-alert);
