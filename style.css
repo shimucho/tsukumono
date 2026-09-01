@@ -325,7 +325,7 @@ section {
 }
 
 /* ==========================================================================
-   スマートフォン対応 (ブレイクポイント: 768px以下)
+   スマートフォン対応 (ブレイクポイント: 768px以下) - ナビゲーション最適化版
    ========================================================================== */
 @media (max-width: 768px) {
     body {
@@ -340,23 +340,39 @@ section {
         margin: 20px 0;
     }
 
-    /* ヘッダーの要素を中央または縦並びに */
+    /* ヘッダーの要素を中央縦並びに */
     .header-inner {
         flex-direction: column;
         align-items: center;
         text-align: center;
-        gap: 15px;
+        gap: 20px; /* ロゴとメニューの間の余白 */
     }
 
-    /* グローバルナビゲーションをスマホ用に最適化 */
+    /* 🟢 グローバルナビゲーションをスマホ用に最適化 */
+    .global-nav {
+        width: 100%; /* 横幅いっぱいに広げる */
+    }
+
     .global-nav ul {
-        justify-content: center;
-        gap: 10px;
+        display: flex;
+        flex-wrap: wrap;       /* 画面幅に応じて自動で綺麗に改行させる */
+        justify-content: center; /* メニュー全体を中央寄せに */
+        gap: 8px 12px;         /* 上下の行間を8px、左右の隙間を12pxに設定 */
+        padding: 0 10px;
+    }
+
+    .global-nav li {
+        /* 必要に応じて2列や3列に整えたい場合はこちらを有効にしてください */
+        /* min-width: calc(33.333% - 12px); */
     }
 
     .global-nav a {
+        display: inline-block;
         font-size: 13px;
-        padding: 6px 8px;
+        padding: 8px 12px;     /* タップしやすいように上下左右の余白を確保 */
+        background-color: rgba(255, 255, 255, 0.05); /* うっすら背景を敷いてボタンらしく */
+        border-radius: 4px;
+        white-space: nowrap;   /* 単語の途中（「処置サイト」の中など）で変な改行を防ぐ */
     }
 
     /* ヒーローエリアの文字サイズ調整 */
@@ -383,7 +399,7 @@ section {
         font-size: 22px;
     }
 
-    /* テーブルを横スクロール可能に（はみ出し防止） */
+    /* テーブルを横スクロール可能に */
     .data-table {
         display: block;
         width: 100%;
