@@ -1,5 +1,5 @@
 /* ==========================================================================
-   祀務庁 公式ウェブサイト 共通スタイルシート
+   祀務庁 公式ウェブサイト 共通スタイルシート（スマートフォン対応修正版）
    ========================================================================== */
 
 /* --- 基本変数とリセット --- */
@@ -58,7 +58,7 @@ img {
 
 /* ヘッダー */
 .site-header {
-    background-color: var(--accent-dark);
+    background-color: var(--accent Dark);
     color: #ffffff;
     padding: 20px 0;
     border-bottom: 3px solid var(--accent-alert);
@@ -109,7 +109,7 @@ img {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* 警報スクロールバー（トップページ等用） */
+/* 警報スクロールバー */
 .alert-ticker {
     background-color: var(--accent-alert);
     color: #ffffff;
@@ -276,11 +276,11 @@ section {
     margin: 20px 0;
 }
 
-/* ヒーローエリア（トップページ用） */
+/* ヒーローエリア */
 .hero {
     background-color: var(--accent-dark);
     color: #ffffff;
-    padding: 80px 0;
+    padding: 60px 0;
     text-align: center;
     border-bottom: 1px solid var(--border-color);
     position: relative;
@@ -288,13 +288,13 @@ section {
 }
 
 .hero h1 {
-    font-size: 42px;
+    font-size: 36px;
     letter-spacing: 0.2em;
     margin-bottom: 15px;
 }
 
 .hero p {
-    font-size: 18px;
+    font-size: 16px;
     color: #adb5bd;
 }
 
@@ -308,6 +308,7 @@ section {
     border-radius: 4px;
     border: none;
     cursor: pointer;
+    text-align: center;
 }
 
 .btn:hover {
@@ -323,250 +324,77 @@ section {
     background-color: #82241a;
 }
 
-/* レスポンシブ対応 */
+/* ==========================================================================
+   スマートフォン対応 (ブレイクポイント: 768px以下)
+   ========================================================================== */
 @media (max-width: 768px) {
-    .header-inner {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
+    body {
+        font-size: 15px;
+        line-height: 1.65;
     }
-    .global-nav ul {
-        gap: 5px;
-    }
+
+    /* レイアウトを縦一列に */
     .main-wrapper {
         grid-template-columns: 1fr;
-    }
-    .hero h1 {
-        font-size: 30px;
-    }
-}
-
-/* =========================
-   基本設定
-========================= */
-
-* {
-    box-sizing: border-box;
-}
-
-html {
-    font-size: 16px;
-}
-
-body {
-    margin: 0;
-    background: #f5f5f3;
-    color: #222;
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Noto Sans JP",
-        "Yu Gothic",
-        "Hiragino Kaku Gothic ProN",
-        sans-serif;
-    line-height: 1.8;
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-a {
-    color: #174a72;
-}
-
-
-/* =========================
-   ヘッダー
-========================= */
-
-header {
-    background: #ffffff;
-    border-bottom: 1px solid #ccc;
-}
-
-.header-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 20px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.logo {
-    font-size: 1.4rem;
-    font-weight: bold;
-    letter-spacing: .08em;
-}
-
-
-/* =========================
-   ナビゲーション
-========================= */
-
-nav ul {
-    display: flex;
-    gap: 24px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-nav a {
-    text-decoration: none;
-    color: #333;
-}
-
-
-/* =========================
-   メイン
-========================= */
-
-main {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 50px 24px 80px;
-}
-
-.content {
-    background: #fff;
-    padding: 40px;
-    border: 1px solid #ddd;
-}
-
-
-/* =========================
-   見出し
-========================= */
-
-h1 {
-    margin-top: 0;
-    padding-bottom: 16px;
-    border-bottom: 3px solid #333;
-    font-size: 2rem;
-}
-
-h2 {
-    margin-top: 48px;
-    padding-left: 12px;
-    border-left: 4px solid #555;
-    font-size: 1.4rem;
-}
-
-h3 {
-    margin-top: 32px;
-    font-size: 1.1rem;
-}
-
-
-/* =========================
-   ボタン・リンク
-========================= */
-
-.button {
-    display: inline-block;
-    padding: 12px 20px;
-    border: 1px solid #888;
-    background: #fff;
-    text-decoration: none;
-}
-
-
-/* =========================
-   スマートフォン
-========================= */
-
-@media (max-width: 700px) {
-
-    html {
-        font-size: 15px;
+        gap: 30px;
+        margin: 20px 0;
     }
 
-    body {
-        line-height: 1.75;
-    }
-
-    /* ヘッダーを縦積みに */
+    /* ヘッダーの要素を中央または縦並びに */
     .header-inner {
-        display: block;
-        padding: 16px;
-    }
-
-    .logo {
-        font-size: 1.2rem;
-        margin-bottom: 14px;
-    }
-
-    /* ナビを2列にする */
-    nav ul {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0;
-        border-top: 1px solid #ddd;
-        border-left: 1px solid #ddd;
-    }
-
-    nav li {
-        border-right: 1px solid #ddd;
-        border-bottom: 1px solid #ddd;
-    }
-
-    nav a {
-        display: block;
-        padding: 11px 8px;
+        flex-direction: column;
+        align-items: center;
         text-align: center;
-        font-size: .9rem;
+        gap: 15px;
     }
 
-    /* メインの余白を減らす */
-    main {
-        padding: 24px 12px 50px;
+    /* グローバルナビゲーションをスマホ用に最適化 */
+    .global-nav ul {
+        justify-content: center;
+        gap: 10px;
     }
 
-    .content {
-        padding: 24px 18px;
+    .global-nav a {
+        font-size: 13px;
+        padding: 6px 8px;
     }
 
-    /* 見出し */
-    h1 {
-        font-size: 1.6rem;
-        line-height: 1.4;
+    /* ヒーローエリアの文字サイズ調整 */
+    .hero {
+        padding: 40px 0;
+    }
+    
+    .hero h1 {
+        font-size: 24px;
+        letter-spacing: 0.1em;
     }
 
-    h2 {
-        margin-top: 36px;
-        font-size: 1.25rem;
+    .hero p {
+        font-size: 14px;
+        padding: 0 10px;
     }
 
-    h3 {
-        font-size: 1.05rem;
+    /* ページヘッダーの調整 */
+    .page-header {
+        padding: 20px;
     }
 
-    /* 長い文章を読みやすく */
-    p {
-        margin: 0 0 1.2em;
+    .page-title {
+        font-size: 22px;
     }
 
-    /* リスト */
-    ul,
-    ol {
-        padding-left: 1.5em;
-    }
-
-    /* 表がある場合 */
-    table {
+    /* テーブルを横スクロール可能に（はみ出し防止） */
+    .data-table {
         display: block;
         width: 100%;
         overflow-x: auto;
         white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
     }
 
-    /* ボタン */
-    .button {
+    /* ボタンを押しやすいように全幅化 */
+    .btn {
+        display: block;
         width: 100%;
-        text-align: center;
-        padding: 13px;
     }
 }
