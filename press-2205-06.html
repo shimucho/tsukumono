@@ -40,20 +40,23 @@
 
         /* 「閲覧不可」の大文字 */
         .main-alert {
-            font-size: 4rem;
+            font-size: clamp(2rem, 12vw, 4rem); /* ✨スマホでは画面幅に合わせて縮小、PCでは最大の4remで固定 */
             font-weight: 900;
-            letter-spacing: 0.3em;
+            letter-spacing: 0.3em;             /* 祀務庁特有の不気味な余白を維持 */
             margin: 0 0 15px 0;
             text-shadow: 0 0 15px rgba(209, 50, 50, 0.8);
+            white-space: nowrap;               /* ❌絶対に改行させない */
+            padding-left: 0.3em;               /* letter-spacingの仕様による右側の余白を左側にも足して、完全に中央に配置するおまじない */
         }
 
         /* 「このページは閲覧制限がかかりました」の文章 */
         .sub-alert {
-            font-size: 1.4rem;
+            font-size: clamp(0.95rem, 4vw, 1.4rem); /* 🟢サブタイトルもスマホでははみ出さないよう、画面幅に合わせて連動 */
             letter-spacing: 0.15em;
             color: #a3a3a3; /* 落ち着いたグレー */
             margin: 0 0 40px 0;
         }
+
 
         /* 管理コードなどのディテール（より役所らしく） */
         .system-info {
@@ -98,7 +101,7 @@
         <img src="logo.png" alt="祀務庁 紋章" class="alert-logo">
         
         <!-- 大きく出る文字 -->
-        <h1 style="font-size: min(9vw, 38px) !important; white-space: nowrap !important; text-align: center; width: 100%; overflow: hidden; letter-spacing: 0.05em;">閲覧不可</h1>
+        <h1 class="main-alert">閲覧不可</h1>
         <p class="sub-alert">このページは閲覧制限がかかりました</p>
         
         <!-- 官公庁のエラー画面らしさを出すシステムテキスト -->
