@@ -468,3 +468,310 @@ section {
         width: 100%;
     }
 }
+
+
+
+/* ==========================================================================
+祀務庁「組織・沿革」追加スタイル
+========================================================================== */
+
+/* --- 組織図 --- */
+
+.organization-chart {
+background-color: var(--card-bg);
+border: 1px solid var(--border-color);
+padding: 30px;
+margin: 25px 0 35px;
+text-align: center;
+}
+
+.org-root {
+display: inline-block;
+background-color: var(--accent-dark);
+color: #ffffff;
+font-weight: 600;
+padding: 10px 30px;
+border-radius: 2px;
+letter-spacing: 0.08em;
+}
+
+.org-root + .org-line {
+height: 25px;
+width: 1px;
+background-color: var(--border-color);
+margin: 0 auto;
+}
+
+.organization-chart > .org-root:nth-of-type(2) {
+background-color: var(--primary-color);
+font-size: 18px;
+padding: 12px 40px;
+}
+
+.org-branches {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 15px;
+margin-top: 30px;
+position: relative;
+}
+
+/* 祀務庁から各部への横線 */
+.org-branches::before {
+content: "";
+position: absolute;
+top: -15px;
+left: 12.5%;
+right: 12.5%;
+height: 1px;
+background-color: var(--border-color);
+}
+
+.org-branch {
+position: relative;
+}
+
+/* 各部へ伸びる縦線 */
+.org-branch::before {
+content: "";
+position: absolute;
+top: -15px;
+left: 50%;
+width: 1px;
+height: 15px;
+background-color: var(--border-color);
+}
+
+.org-department {
+background-color: #f1f3f5;
+border: 1px solid var(--border-color);
+border-top: 3px solid var(--primary-color);
+padding: 12px 8px;
+font-weight: 700;
+color: var(--primary-color);
+margin-bottom: 10px;
+}
+
+.org-line {
+display: none;
+}
+
+.org-child {
+background-color: #ffffff;
+border: 1px solid var(--border-color);
+padding: 8px 5px;
+margin-top: 5px;
+font-size: 13px;
+color: var(--text-color);
+}
+
+/* --- 部署の業務説明 --- */
+
+.subsection-title {
+font-size: 17px;
+color: var(--accent-dark);
+border-left: 4px solid var(--primary-color);
+padding-left: 10px;
+margin: 30px 0 20px;
+}
+
+.department-list {
+display: flex;
+flex-direction: column;
+gap: 20px;
+}
+
+.department-item {
+background-color: var(--card-bg);
+border: 1px solid var(--border-color);
+padding: 25px;
+}
+
+.department-item h4 {
+font-size: 18px;
+color: var(--primary-color);
+margin-bottom: 3px;
+}
+
+.department-item h5 {
+font-size: 15px;
+color: var(--accent-dark);
+border-left: 3px solid var(--primary-color);
+padding-left: 9px;
+margin: 20px 0 7px;
+}
+
+.department-item p {
+margin-bottom: 10px;
+}
+
+.department-item p:last-child {
+margin-bottom: 0;
+}
+
+.department-keyword {
+color: var(--text-muted);
+font-size: 13px;
+font-weight: 600;
+letter-spacing: 0.08em;
+margin-bottom: 15px !important;
+}
+
+/* --- 沿革表 --- */
+
+.history-table-wrapper {
+width: 100%;
+overflow-x: auto;
+margin: 25px 0;
+-webkit-overflow-scrolling: touch;
+}
+
+.history-table {
+width: 100%;
+min-width: 720px;
+border-collapse: collapse;
+background-color: var(--card-bg);
+font-size: 13px;
+}
+
+.history-table th,
+.history-table td {
+border: 1px solid var(--border-color);
+padding: 11px 13px;
+text-align: left;
+vertical-align: top;
+}
+
+.history-table th {
+background-color: #f1f3f5;
+color: var(--primary-color);
+font-weight: 600;
+white-space: nowrap;
+}
+
+.history-table th:first-child,
+.history-table td:first-child {
+width: 135px;
+white-space: nowrap;
+}
+
+.history-table th:last-child,
+.history-table td:last-child {
+width: 110px;
+white-space: nowrap;
+}
+
+.history-table tbody tr:nth-child(even) {
+background-color: #fafafa;
+}
+
+/* ==========================================================================
+スマートフォン対応
+========================================================================== */
+
+@media (max-width: 768px) {
+
+```
+/* --- 組織図 --- */
+
+.organization-chart {
+    padding: 20px 10px;
+    margin-top: 20px;
+}
+
+.org-root {
+    padding: 9px 20px;
+    font-size: 13px;
+}
+
+.organization-chart > .org-root:nth-of-type(2) {
+    font-size: 16px;
+    padding: 10px 28px;
+}
+
+.org-branches {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px 10px;
+    margin-top: 25px;
+}
+
+/* スマホでは4部署を2×2にする */
+.org-branches::before {
+    display: none;
+}
+
+.org-branch::before {
+    display: none;
+}
+
+.org-department {
+    font-size: 14px;
+    padding: 10px 5px;
+}
+
+.org-child {
+    font-size: 12px;
+    padding: 7px 3px;
+}
+
+
+/* --- 部署説明 --- */
+
+.department-item {
+    padding: 20px 15px;
+}
+
+.department-item h4 {
+    font-size: 17px;
+}
+
+.department-item h5 {
+    font-size: 14px;
+    margin-top: 18px;
+}
+
+.department-keyword {
+    font-size: 12px;
+}
+
+
+/* --- 沿革表 --- */
+
+.history-table-wrapper {
+    overflow-x: auto;
+}
+
+.history-table {
+    min-width: 0;
+    width: 100%;
+    table-layout: fixed;
+    font-size: 11px;
+}
+
+.history-table th,
+.history-table td {
+    padding: 8px 5px;
+    white-space: normal;
+    word-break: break-all;
+    overflow-wrap: break-word;
+}
+
+.history-table th:first-child,
+.history-table td:first-child {
+    width: 22%;
+    white-space: normal;
+}
+
+.history-table th:nth-child(2),
+.history-table td:nth-child(2) {
+    width: 58%;
+}
+
+.history-table th:last-child,
+.history-table td:last-child {
+    width: 20%;
+    white-space: normal;
+}
+```
+
+}
